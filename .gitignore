@@ -1,0 +1,10 @@
+**/.env
+tmp
+
+web/pnpm-debug.log*
+web/node_modules
+web/dist
+*.local
+
+.vscode/*
+.DS_Store

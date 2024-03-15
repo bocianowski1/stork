@@ -1,0 +1,13 @@
+FROM golang:1.22.0-alpine3.18
+
+WORKDIR /app
+
+COPY . .
+# RUN if [ ! -d "/cmd" ]; then mkdir /cmd; fi
+# RUN mv /app/main.go /app/cmd/main.go
+
+RUN go install github.com/cosmtrek/air@latest
+
+RUN go mod tidy
+
+CMD ["air", "main.go", "-b", "0.0.0.0"]

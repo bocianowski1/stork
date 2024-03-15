@@ -1,0 +1,8 @@
+*_test.go
+web
+tmp
+.gitignore
+env.sh
+
+# include
+!web/dist

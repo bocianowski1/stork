@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  # postgres:
+  #   container_name: ${APP}-postgres
+  #   restart: always
+  #   image: postgres:alpine
+  #   environment:
+  #     - POSTGRES_USER=${POSTGRES_USER}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #     - POSTGRES_DB=${POSTGRES_DB}
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+
+  db:
+    image: mongo
+    container_name: ${APP}-mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=torger
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+
+  # api:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile.dev
+  #   container_name: ${APP}-api
+  #   restart: always
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres:
+  # redis:
+  #   driver: local
